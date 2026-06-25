@@ -53,6 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -117,6 +118,9 @@
   }
 
   .nav-cta:hover { background: var(--off-white) !important; transform: translateY(-1px); }
+
+  .logo-short { display: none; }
+  .logo-full { display: inline; }
 
   .hamburger {
     display: none;
@@ -1014,11 +1018,27 @@
   }
 
   @media (max-width: 768px) {
-    section { padding: 80px 24px; }
-    nav { padding: 16px 24px; }
+    section { padding: 80px 20px; }
+    nav { padding: 14px 20px; }
     .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .section-divider { margin: 0 24px; }
+    .hamburger { display: flex; flex-shrink: 0; }
+    .section-divider { margin: 0 20px; }
+
+    /* Nav logo — shorter on mobile */
+    .nav-logo { font-size: 15px; }
+    .logo-dot { flex-shrink: 0; }
+    .logo-full { display: none; }
+    .logo-short { display: inline; }
+
+    /* Hero fixes */
+    #hero { padding: 0 20px; }
+    .hero-eyebrow { font-size: 9px; letter-spacing: 1.5px; gap: 6px; flex-wrap: nowrap; white-space: nowrap; }
+    .hero-eyebrow::before, .hero-eyebrow::after { width: 18px; flex-shrink: 0; }
+    .hero-subtitle { font-size: 15px; }
+    .hero-buttons { flex-direction: column; align-items: center; width: 100%; max-width: 320px; margin: 0 auto; gap: 12px; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 15px 24px; font-size: 15px; }
+
+    /* Sections */
     .research-header { flex-direction: column; align-items: flex-start; gap: 16px; }
     .research-grid { grid-template-columns: 1fr; }
     .research-card { border-radius: 12px !important; }
@@ -1027,14 +1047,17 @@
     .pub-card { grid-template-columns: 1fr; }
     .pub-card:first-child { border-radius: 12px 12px 0 0; }
     .pub-card:last-child { border-radius: 0 0 12px 12px; }
-    .mission-pillars { gap: 28px; }
+    .pub-card { padding: 24px 20px; }
+    .mission-pillars { gap: 24px; }
     .join-roles { grid-template-columns: 1fr; }
     .role-card { border-radius: 12px !important; }
     .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-    .footer { padding: 48px 24px; }
+    footer { padding: 48px 20px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
-    #mission { padding: 100px 24px; }
+    .footer-socials { flex-wrap: wrap; gap: 14px; }
+    #mission { padding: 80px 20px; }
     .pub-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1048,7 +1071,8 @@
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
     <div class="logo-dot"></div>
-    Neuroity Research Labs
+    <span class="logo-full">Neuroity Research Labs</span>
+    <span class="logo-short">Neuroity</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -1430,12 +1454,11 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 Neuroity Research Labs. All rights reserved.</p>
+    <p>© 2026 Neuroity Research Labs. All rights reserved.</p>
     <div class="footer-socials">
       <a href="#">LinkedIn</a>
       <a href="#">GitHub</a>
       <a href="#">arXiv</a>
-      <a href="mailto:research@neuroity.org">research@neuroity.org</a>
     </div>
   </div>
 </footer>
